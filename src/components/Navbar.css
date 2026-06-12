@@ -1,0 +1,192 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: white;
+
+  border-bottom: 1px solid #eee;
+}
+
+.navbar-top {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 40px;
+}
+
+.nav-left,
+.nav-right {
+  width: 120px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.nav-left svg {
+  font-size: 26px;
+  cursor: pointer;
+  color: black;
+}
+
+.nav-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-logo img {
+  height: 55px;
+  width: auto;
+  display: block;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  gap: 18px;
+}
+
+.nav-right svg {
+  font-size: 26px;
+  color: black;
+  cursor: pointer;
+}
+
+.nav-right a {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  color: black;
+  text-decoration: none;
+}
+
+.cart-badge {
+  position: absolute;
+
+  top: -8px;
+  right: -10px;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  background: black;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 10px;
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: center;
+
+  gap: 40px;
+
+  padding: 14px 0;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+
+  color: black;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  letter-spacing: 1px;
+
+  transition: 0.3s;
+}
+
+
+
+@media (max-width: 768px) {
+  .navbar-top {
+    padding: 15px 20px;
+  }
+
+  .nav-logo img {
+    height: 45px;
+  }
+
+  .navbar-menu {
+    flex-wrap: wrap;
+    gap: 15px;
+
+    padding: 10px;
+  }
+
+  .navbar-menu a {
+    font-size: 13px;
+  }
+}
+.navbar-menu a {
+  text-decoration: none;
+  color: black;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  letter-spacing: 1px;
+
+  padding: 14px 18px;
+
+  transition: all 0.3s ease;
+}
+
+.navbar-menu a:hover {
+  background: black;
+  color: white;
+}
+.navbar-menu {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 0;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: black;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  letter-spacing: 1px;
+
+  padding: 14px 20px;
+
+  transition: all 0.25s ease;
+}
+
+.navbar-menu a:hover {
+  background-color: #000;
+  color: #fff;
+}
+.cart-btn-nav {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  position: relative;
+
+  font-size: inherit;
+  color: inherit;
+}

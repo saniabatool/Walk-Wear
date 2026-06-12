@@ -1,0 +1,55 @@
+.home {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.heading {
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px;
+}
+
+.view-all-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.view-all-btn {
+  background: #000;
+  color: white;
+  border: none;
+  padding: 16px 45px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.view-all-btn:hover {
+  background: #222;
+}
+.section-title {
+  font-size: 2.3rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #222;
+  margin-bottom: 35px;
+  font-family: "Montserrat", sans-serif;
+}
+.product-section {
+  margin-bottom: 100px;
+}
+
+.home {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 70px 20px;
+}

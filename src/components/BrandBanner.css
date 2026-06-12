@@ -1,0 +1,11 @@
+.brand-banner {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.brand-banner img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
