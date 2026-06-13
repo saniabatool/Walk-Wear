@@ -3,28 +3,28 @@ import "./CustomerReviews.css";
 function CustomerReviews() {
   const reviews = [
     {
-      image: "public/images/red.jpg",
+      image: "/images/toe.jpg",
       text: "Beautiful design and very comfortable to walk in. The cushioning feels soft on the feet.",
       name: "Fatima",
       product: "COURT SHOES",
     },
 
     {
-      image: "public/images/blackmules.jpg",
+      image: "/images/CoutShoe.jpg",
       text: "I am really impressed with the comfort and durability of these Heels",
       name: "Zainab",
       product: "SQUARE HEELS",
     },
 
     {
-      image: "public/images/blacknet.jpg",
+      image: "/images/whitePumps.jpg",
       text: "These pumps are lightweight, comfortable and very trendy.",
       name: "Saba Abbas",
       product: "NET PUMPS",
     },
 
     {
-      image: "public/images/partywhite.jpg",
+      image: "/images/pyramidHeels.jpg",
       text: "The quality exceeded my expectations. The sole is soft and supportive.",
       name: "Humna",
       product: "CHUNKY HEELS",
