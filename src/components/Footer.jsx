@@ -57,7 +57,7 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        © 2026 Shoe • Privacy Policy
+        © 2026 Walk&Wear • Privacy Policy •All rights reserved • Sania Batool
       </div>
 
     </footer>
