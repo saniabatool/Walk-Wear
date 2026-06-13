@@ -44,7 +44,7 @@ function Footer() {
         <div className="footer-contact">
           <h4>Address: Karachi, Pakistan</h4>
           <p>Contact: +92 123 13444</p>
-          <p>Email: support@shoe.com</p>
+          <p>Email: support@walknwear.com</p>
 
           <div className="social-icons">
             <span>📘</span>

@@ -1,12 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import { CartContext } from "../context/CartContext";
 
 import {
   FiSearch,
-  FiUser,
   FiShoppingBag,
+  FiMenu,
 } from "react-icons/fi";
 
 import "./Navbar.css";
@@ -19,20 +19,26 @@ function Navbar() {
 
   const navigate = useNavigate();
 
+  const [menuOpen, setMenuOpen] =
+    useState(false);
+
   return (
     <header className="navbar">
 
       {/* TOP BAR */}
       <div className="navbar-top">
 
+        {/* LEFT */}
         <div
-  className="nav-left"
-  onClick={() => navigate("/search")}
-  style={{ cursor: "pointer" }}
->
-  <FiSearch />
-</div>
+          className="nav-left"
+          onClick={() =>
+            setMenuOpen(true)
+          }
+        >
+          <FiMenu />
+        </div>
 
+        {/* LOGO */}
         <div className="nav-logo">
           <Link to="/">
             <img
@@ -42,9 +48,16 @@ function Navbar() {
           </Link>
         </div>
 
+        {/* RIGHT */}
         <div className="nav-right">
 
-          <FiUser />
+          <FiSearch
+            onClick={() =>
+              navigate("/search")
+            }
+          />
+
+      
 
           <button
             className="cart-btn-nav"
@@ -65,30 +78,91 @@ function Navbar() {
 
       </div>
 
-      {/* MENU */}
+      {/* MOBILE DRAWER */}
+      {menuOpen && (
+        <div className="mobile-menu">
+
+          <button
+            className="close-menu"
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+            ✕
+          </button>
+
+          <Link
+            to="/collections/new-arrival"
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+            NEW ARRIVAL
+          </Link>
+
+          <Link
+            to="/collections/best-seller"
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+            BEST SELLER
+          </Link>
+
+          <Link
+            to="/collections/all"
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+            SHOP ALL
+          </Link>
+
+          <Link
+            to="/collections/under1499"
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+            UNDER 1499
+          </Link>
+
+          <Link
+            to="/contact"
+            onClick={() =>
+              setMenuOpen(false)
+            }
+          >
+            CONTACT
+          </Link>
+
+        </div>
+      )}
+
+      {/* DESKTOP MENU */}
       <nav className="navbar-menu">
 
-  <Link to="/collections/new-arrival">
-    NEW ARRIVAL
-  </Link>
+        <Link to="/collections/new-arrival">
+          NEW ARRIVAL
+        </Link>
 
-  <Link to="/collections/best-seller">
-    BEST SELLER
-  </Link>
+        <Link to="/collections/best-seller">
+          BEST SELLER
+        </Link>
 
-  <Link to="/collections/all">
-    SHOP ALL
-  </Link>
+        <Link to="/collections/all">
+          SHOP ALL
+        </Link>
 
-  <Link to="/collections/under1499">
-    UNDER 1499
-  </Link>
+        <Link to="/collections/under1499">
+          UNDER 1499
+        </Link>
 
-  <Link to="/contact">
-    CONTACT
-  </Link>
+        <Link to="/contact">
+          CONTACT
+        </Link>
 
-</nav>
+      </nav>
 
     </header>
   );

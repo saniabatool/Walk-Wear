@@ -280,3 +280,146 @@ height: 100px;
 font-size: 2rem;
 }
 }
+/* TABLET */
+
+@media (max-width: 992px) {
+  .product-page {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .product-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .main-image {
+    width: 100%;
+  }
+
+  .main-image img {
+    width: 100%;
+    height: auto;
+    max-height: 700px;
+  }
+
+  .thumbnails {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .thumbnail,
+  .thumbnails img {
+    width: 90px;
+    height: 110px;
+  }
+
+  .product-info h1 {
+    font-size: 2.2rem;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .product-page {
+    margin: 25px auto 50px;
+    padding: 0 15px;
+  }
+
+  .product-info h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .price-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .old-price,
+  .current-price {
+    font-size: 16px;
+  }
+
+  .options {
+    gap: 8px;
+  }
+
+  .options button {
+    min-width: 65px;
+    height: 38px;
+    font-size: 14px;
+    padding: 0 14px;
+  }
+
+  .quantity-box {
+    width: 120px;
+    height: 44px;
+  }
+
+  .quantity-box button {
+    width: 40px;
+    height: 42px;
+  }
+
+  .cart-btn,
+  .buy-btn {
+    height: 46px;
+    font-size: 15px;
+  }
+
+  .description {
+    margin-top: 35px;
+  }
+
+  .description p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+}
+
+/* SMALL PHONES */
+
+@media (max-width: 480px) {
+  .product-page {
+    padding: 0 12px;
+  }
+
+  .product-info h1 {
+    font-size: 1.5rem;
+  }
+
+  .thumbnail,
+  .thumbnails img {
+    width: 65px;
+    height: 85px;
+  }
+
+  .old-price,
+  .current-price {
+    font-size: 14px;
+  }
+
+  .sale-badge {
+    font-size: 10px;
+    padding: 4px 10px;
+  }
+
+  .options button {
+    min-width: 55px;
+    height: 36px;
+    font-size: 13px;
+    padding: 0 12px;
+  }
+
+  .description h3 {
+    font-size: 14px;
+  }
+
+  .description p {
+    font-size: 13px;
+  }
+}

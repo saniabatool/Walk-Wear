@@ -7,12 +7,10 @@
 .footer-top {
   max-width: 1300px;
   margin: auto;
-
   padding: 70px 40px;
 
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1.5fr;
-
   gap: 50px;
 }
 
@@ -33,6 +31,7 @@
   display: flex;
   border: 1px solid #555;
   max-width: 380px;
+  width: 100%;
 }
 
 .newsletter-box input {
@@ -44,6 +43,7 @@
 
   padding: 15px;
   font-size: 16px;
+  min-width: 0;
 }
 
 .newsletter-box button {
@@ -84,6 +84,7 @@
 
   font-size: 22px;
   cursor: pointer;
+  flex-wrap: wrap;
 }
 
 .footer-bottom {
@@ -93,4 +94,70 @@
 
   padding: 25px;
   color: #a5a5a5;
+}
+
+/* LARGE TABLETS */
+
+@media (max-width: 1024px) {
+  .footer-top {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+}
+
+/* TABLETS */
+
+@media (max-width: 768px) {
+  .footer-top {
+    padding: 50px 25px;
+    gap: 35px;
+  }
+
+  .footer-newsletter h3,
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 20px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 480px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+    gap: 30px;
+  }
+
+  .footer-newsletter h3,
+  .footer-links h4,
+  .footer-contact h4 {
+    font-size: 18px;
+  }
+
+  .footer-newsletter p,
+  .footer-contact p,
+  .footer-links a {
+    font-size: 14px;
+  }
+
+  .newsletter-box input {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .newsletter-box button {
+    width: 50px;
+    font-size: 18px;
+  }
+
+  .social-icons {
+    gap: 15px;
+    font-size: 20px;
+  }
+
+  .footer-bottom {
+    font-size: 13px;
+    padding: 20px;
+  }
 }
