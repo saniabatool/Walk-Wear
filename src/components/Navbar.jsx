@@ -7,63 +7,59 @@ import {
   FiSearch,
   FiShoppingBag,
   FiMenu,
+  FiX,
 } from "react-icons/fi";
 
 import "./Navbar.css";
 
 function Navbar() {
-  const {
-    cart,
-    setIsCartOpen,
-  } = useContext(CartContext);
+  const { cart, setIsCartOpen } = useContext(CartContext);
 
   const navigate = useNavigate();
 
-  const [menuOpen, setMenuOpen] =
-    useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="navbar">
 
-      {/* TOP BAR */}
+      {/* Announcement Bar */}
+      <div className="announcement-bar">
+        FREE SHIPPING ALL OVER PAKISTAN
+      </div>
+
+      {/* Header */}
       <div className="navbar-top">
 
-        {/* LEFT */}
-        <div
-          className="nav-left"
-          onClick={() =>
-            setMenuOpen(true)
-          }
-        >
-          <FiMenu />
+        {/* Left */}
+        <div className="nav-left">
+
+          {/* Desktop Search */}
+          <FiSearch
+            className="desktop-search"
+            onClick={() => navigate("/search")}
+          />
+
+          {/* Mobile Menu */}
+          <FiMenu
+            className="mobile-menu-icon"
+            onClick={() => setMenuOpen(true)}
+          />
+
         </div>
 
-        {/* LOGO */}
+        {/* Center Logo */}
         <div className="nav-logo">
           <Link to="/">
-            <img
-              src="/images/logo.jpg"
-              alt="logo"
-            />
+            WALK & WEAR
           </Link>
         </div>
 
-        {/* RIGHT */}
+        {/* Right */}
         <div className="nav-right">
-
-          <FiSearch
-            onClick={() =>
-              navigate("/search")
-            }
-          />
-
-      
 
           <button
             className="cart-btn-nav"
-            onClick={() =>
-              setIsCartOpen(true)
-            }
+            onClick={() => setIsCartOpen(true)}
           >
             <FiShoppingBag />
 
@@ -78,76 +74,15 @@ function Navbar() {
 
       </div>
 
-      {/* MOBILE DRAWER */}
-      {menuOpen && (
-        <div className="mobile-menu">
-
-          <button
-            className="close-menu"
-            onClick={() =>
-              setMenuOpen(false)
-            }
-          >
-            ✕
-          </button>
-
-          <Link
-            to="/collections/new-arrival"
-            onClick={() =>
-              setMenuOpen(false)
-            }
-          >
-            NEW ARRIVAL
-          </Link>
-
-          <Link
-            to="/collections/best-seller"
-            onClick={() =>
-              setMenuOpen(false)
-            }
-          >
-            BEST SELLER
-          </Link>
-
-          <Link
-            to="/collections/all"
-            onClick={() =>
-              setMenuOpen(false)
-            }
-          >
-            SHOP ALL
-          </Link>
-
-          <Link
-            to="/collections/under1499"
-            onClick={() =>
-              setMenuOpen(false)
-            }
-          >
-            UNDER 1499
-          </Link>
-
-          <Link
-            to="/contact"
-            onClick={() =>
-              setMenuOpen(false)
-            }
-          >
-            CONTACT
-          </Link>
-
-        </div>
-      )}
-
-      {/* DESKTOP MENU */}
+      {/* Desktop Menu */}
       <nav className="navbar-menu">
 
         <Link to="/collections/new-arrival">
-          NEW ARRIVAL
+          NEW ARRIVALS
         </Link>
 
         <Link to="/collections/best-seller">
-          BEST SELLER
+          BEST SELLERS
         </Link>
 
         <Link to="/collections/all">
@@ -163,6 +98,65 @@ function Navbar() {
         </Link>
 
       </nav>
+
+      {/* Overlay */}
+      <div
+        className={`mobile-overlay ${
+          menuOpen ? "show" : ""
+        }`}
+        onClick={() => setMenuOpen(false)}
+      />
+
+      {/* Mobile Drawer */}
+      <div
+        className={`mobile-menu ${
+          menuOpen ? "show" : ""
+        }`}
+      >
+
+        <button
+          className="close-menu"
+          onClick={() => setMenuOpen(false)}
+        >
+          <FiX />
+        </button>
+
+        <Link
+          to="/collections/new-arrival"
+          onClick={() => setMenuOpen(false)}
+        >
+          NEW ARRIVALS
+        </Link>
+
+        <Link
+          to="/collections/best-seller"
+          onClick={() => setMenuOpen(false)}
+        >
+          BEST SELLERS
+        </Link>
+
+        <Link
+          to="/collections/all"
+          onClick={() => setMenuOpen(false)}
+        >
+          SHOP ALL
+        </Link>
+
+        <Link
+          to="/collections/under1499"
+          onClick={() => setMenuOpen(false)}
+        >
+          UNDER 1499
+        </Link>
+
+        <Link
+          to="/contact"
+          onClick={() => setMenuOpen(false)}
+        >
+          CONTACT
+        </Link>
+
+      </div>
 
     </header>
   );

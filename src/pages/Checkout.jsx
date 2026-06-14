@@ -97,15 +97,13 @@ console.log("Customer email sent:", customerEmail);
   }
   return (
     <>
-      <div className="checkout-navbar">
-        <Link to="/">
-          <img
-            src="/images/logo.jpg"
-            alt="SHOE"
-            className="checkout-nav-logo"
-          />
-        </Link>
+     <div className="checkout-navbar">
+  <Link to="/" className="checkout-nav-logo">
+    WALK & WEAR
+  </Link>
+</div>
 
+     {/* <div>
         <button className="checkout-cart-btn">
           <svg
             width="24"
@@ -119,7 +117,7 @@ console.log("Customer email sent:", customerEmail);
             <path d="M9 7V5C9 3.3 10.3 2 12 2C13.7 2 15 3.3 15 5V7" />
           </svg>
         </button>
-      </div>
+      </div> */}
 
       <div className="checkout-page">
         <div className="checkout-left">

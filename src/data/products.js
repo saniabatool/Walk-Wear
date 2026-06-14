@@ -46,7 +46,7 @@ const products = [
       "/images/whiteHeels.jpg",
       "/images/SquareHeels.jpg",
     ],
-    colors: ["Pearl", "Silver", "Gold"],
+    colors: ["Cream", "Camel"],
     sizes: [36, 37, 38, 39, 40, 41],
     description: "Step into comfort and effortless style with these elevated sandals, designed for both everyday wear and special occasions. Featuring a carefully crafted sole for enhanced support and cushioning, they provide lasting comfort throughout the day. The elevated design adds a flattering touch while remaining practical for warm-weather outings and daily use. Perfectly suited to complement both traditional and modern outfits, these sandals combine elegance with functionality. Built with durable materials for long-lasting wear, they are a versatile addition to any wardrobe. Whether you're running errands, attending social gatherings, or enjoying a casual stroll, these sandals offer the perfect balance of comfort, support, and style.",
     tag: ["sale", "best"],
