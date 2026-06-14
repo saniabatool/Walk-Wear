@@ -1,21 +1,106 @@
-import { useContext } from "react";
+import emailjs from "@emailjs/browser";
+import { useState, useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
-
 import "./Checkout.css";
 
 function Checkout() {
   const { cart } = useContext(CartContext);
 
+  const [formData, setFormData] = useState({
+    email: "",
+    firstName: "",
+    lastName: "",
+    address: "",
+    city: "",
+    postalCode: "",
+    phone: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   const total = cart.reduce(
-    (sum, item) =>
-      sum + item.price * item.quantity,
+    (sum, item) => sum + item.price * item.quantity,
     0
   );
 
+  const handleOrder = async () => {
+    if (
+      !formData.firstName ||
+      !formData.lastName ||
+      !formData.address ||
+      !formData.city ||
+      !formData.phone
+    ) {
+      alert("Please fill all required fields.");
+      return;
+    }
+
+    const orderItems = cart
+      .map(
+        (item) =>
+          `${item.title} (${item.selectedColor}/${item.selectedSize}) x ${item.quantity}`
+      )
+      .join("\n");
+
+    const customerName = `${formData.firstName} ${formData.lastName}`;
+
+    try {
+      await emailjs.send(
+        "service_hazc51a",
+        "template_41k5b5m",
+        {
+          customer_name: customerName,
+          customer_email: formData.email,
+          customer_phone: formData.phone,
+          customer_address: `${formData.address}, ${formData.city}, ${formData.postalCode}`,
+          order_items: orderItems,
+          total: total,
+        },
+        "9XlnUiVJfpmN832sU"
+      );
+
+      const whatsappMessage = `
+🛍 NEW ORDER
+
+Name: ${customerName}
+
+Phone: ${formData.phone}
+
+Email: ${formData.email}
+
+Address:
+${formData.address}
+${formData.city}
+${formData.postalCode}
+
+Products:
+${orderItems}
+
+Total: Rs.${total}
+`;
+
+      window.open(
+        `https://wa.me/923091153541?text=${encodeURIComponent(
+          whatsappMessage
+        )}`,
+        "_blank"
+      );
+
+      alert("Order placed successfully!");
+    } catch (error) {
+      console.error(error);
+      alert("Failed to place order.");
+    }
+  };
+
   return (
     <>
-      {/* CHECKOUT HEADER */}
       <div className="checkout-navbar">
         <Link to="/">
           <img
@@ -41,15 +126,15 @@ function Checkout() {
       </div>
 
       <div className="checkout-page">
-
-        {/* LEFT SIDE */}
         <div className="checkout-left">
-
           <h2>Contact</h2>
 
           <input
-            type="text"
-            placeholder="Email or mobile number"
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
           />
 
           <label className="checkbox-row">
@@ -66,18 +151,27 @@ function Checkout() {
           <div className="row">
             <input
               type="text"
+              name="firstName"
               placeholder="First name"
+              value={formData.firstName}
+              onChange={handleChange}
             />
 
             <input
               type="text"
+              name="lastName"
               placeholder="Last name"
+              value={formData.lastName}
+              onChange={handleChange}
             />
           </div>
 
           <input
             type="text"
+            name="address"
             placeholder="Address"
+            value={formData.address}
+            onChange={handleChange}
           />
 
           <input
@@ -88,18 +182,27 @@ function Checkout() {
           <div className="row">
             <input
               type="text"
+              name="city"
               placeholder="City"
+              value={formData.city}
+              onChange={handleChange}
             />
 
             <input
               type="text"
+              name="postalCode"
               placeholder="Postal code"
+              value={formData.postalCode}
+              onChange={handleChange}
             />
           </div>
 
           <input
             type="text"
+            name="phone"
             placeholder="Phone"
+            value={formData.phone}
+            onChange={handleChange}
           />
 
           <label className="checkbox-row">
@@ -120,15 +223,15 @@ function Checkout() {
             Cash On Delivery (COD)
           </div>
 
-          <button className="complete-order">
+          <button
+            className="complete-order"
+            onClick={handleOrder}
+          >
             Complete Order
           </button>
-
         </div>
 
-        {/* RIGHT SIDE */}
         <div className="checkout-right">
-
           {cart.map((item, index) => (
             <div
               key={index}
@@ -146,9 +249,7 @@ function Checkout() {
                   {item.selectedColor} / {item.selectedSize}
                 </p>
 
-                <p>
-                  Qty: {item.quantity}
-                </p>
+                <p>Qty: {item.quantity}</p>
               </div>
 
               <strong>
@@ -162,10 +263,7 @@ function Checkout() {
               type="text"
               placeholder="Discount code"
             />
-
-            <button>
-              Apply
-            </button>
+            <button>Apply</button>
           </div>
 
           <div className="summary-row">
@@ -180,14 +278,9 @@ function Checkout() {
 
           <div className="checkout-total">
             <span>Total</span>
-
-            <strong>
-              Rs.{total}
-            </strong>
+            <strong>Rs.{total}</strong>
           </div>
-
         </div>
-
       </div>
     </>
   );
