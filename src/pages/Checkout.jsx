@@ -30,13 +30,15 @@ function Checkout() {
   );
 
   const handleOrder = async () => {
-    if (
-      !formData.firstName ||
-      !formData.lastName ||
-      !formData.address ||
-      !formData.city ||
-      !formData.phone
-    ) {
+      if (
+  !formData.email ||
+  !formData.firstName ||
+  !formData.lastName ||
+  !formData.address ||
+  !formData.city ||
+  !formData.phone
+)
+     {
       alert("Please fill all required fields.");
       return;
     }
@@ -52,61 +54,38 @@ function Checkout() {
 
     try {
   // Email to Business Owner
-  await emailjs.send(
-    "service_hazc51a",
-    "template_41k5b5m",
-    {
-      customer_name: customerName,
-      customer_email: formData.email,
-      customer_phone: formData.phone,
-      customer_address: `${formData.address}, ${formData.city}, ${formData.postalCode}`,
-      order_items: orderItems,
-      total: total,
-    },
-    "9XlnUiVJfpmN832sU"
-  );
+  // Email to Business Owner
+// Email to Business Owner
+const ownerEmail = await emailjs.send(
+  "service_hazc51a",
+  "template_41k5b5m",
+  {
+    customer_name: customerName,
+    customer_email: formData.email,
+    customer_phone: formData.phone,
+    customer_address: `${formData.address}, ${formData.city}, ${formData.postalCode}`,
+    order_items: orderItems,
+    total: total,
+  },
+  "9XlnUiVJfpmN832sU"
+);
 
-  // Confirmation Email to Customer
-  await emailjs.send(
-    "service_hazc51a",
-    "template_jyc8yko",
-    {
-      customer_name: customerName,
-      customer_email: formData.email,
-      order_items: orderItems,
-      total: total,
-    },
-    "9XlnUiVJfpmN832sU"
-  );
+console.log("Owner email sent:", ownerEmail);
 
-  // WhatsApp notification for Business Owner
-  const whatsappMessage = `
-🛍 NEW ORDER
+// Customer Confirmation Email
+const customerEmail = await emailjs.send(
+  "service_hazc51a",
+  "template_jyc8yko",
+  {
+    customer_name: customerName,
+    customer_email: formData.email,
+    order_items: orderItems,
+    total: total,
+  },
+  "9XlnUiVJfpmN832sU"
+);
 
-Name: ${customerName}
-
-Phone: ${formData.phone}
-
-Email: ${formData.email}
-
-Address:
-${formData.address}
-${formData.city}
-${formData.postalCode}
-
-Products:
-${orderItems}
-
-Total: Rs.${total}
-`;
-
-  window.open(
-    `https://wa.me/923091153541?text=${encodeURIComponent(
-      whatsappMessage
-    )}`,
-    "_blank"
-  );
-
+console.log("Customer email sent:", customerEmail);
   alert(
     "Thank you! Your order has been placed successfully. A confirmation email has been sent to you."
   );
