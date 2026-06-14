@@ -51,21 +51,36 @@ function Checkout() {
     const customerName = `${formData.firstName} ${formData.lastName}`;
 
     try {
-      await emailjs.send(
-        "service_hazc51a",
-        "template_41k5b5m",
-        {
-          customer_name: customerName,
-          customer_email: formData.email,
-          customer_phone: formData.phone,
-          customer_address: `${formData.address}, ${formData.city}, ${formData.postalCode}`,
-          order_items: orderItems,
-          total: total,
-        },
-        "9XlnUiVJfpmN832sU"
-      );
+  // Email to Business Owner
+  await emailjs.send(
+    "service_hazc51a",
+    "template_41k5b5m",
+    {
+      customer_name: customerName,
+      customer_email: formData.email,
+      customer_phone: formData.phone,
+      customer_address: `${formData.address}, ${formData.city}, ${formData.postalCode}`,
+      order_items: orderItems,
+      total: total,
+    },
+    "9XlnUiVJfpmN832sU"
+  );
 
-      const whatsappMessage = `
+  // Confirmation Email to Customer
+  await emailjs.send(
+    "service_hazc51a",
+    "template_jyc8yko",
+    {
+      customer_name: customerName,
+      customer_email: formData.email,
+      order_items: orderItems,
+      total: total,
+    },
+    "9XlnUiVJfpmN832sU"
+  );
+
+  // WhatsApp notification for Business Owner
+  const whatsappMessage = `
 🛍 NEW ORDER
 
 Name: ${customerName}
@@ -85,20 +100,22 @@ ${orderItems}
 Total: Rs.${total}
 `;
 
-      window.open(
-        `https://wa.me/923091153541?text=${encodeURIComponent(
-          whatsappMessage
-        )}`,
-        "_blank"
-      );
+  window.open(
+    `https://wa.me/923091153541?text=${encodeURIComponent(
+      whatsappMessage
+    )}`,
+    "_blank"
+  );
 
-      alert("Order placed successfully!");
-    } catch (error) {
-      console.error(error);
-      alert("Failed to place order.");
-    }
-  };
+  alert(
+    "Thank you! Your order has been placed successfully. A confirmation email has been sent to you."
+  );
 
+} catch (error) {
+  console.error(error);
+  alert("Failed to place order.");
+}
+  }
   return (
     <>
       <div className="checkout-navbar">
