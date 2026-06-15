@@ -137,6 +137,11 @@
 .checkout-btn:hover {
   opacity: .9;
 }
+.checkout-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
 /* TABLET */
 
 @media (max-width: 768px) {

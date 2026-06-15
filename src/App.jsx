@@ -25,6 +25,7 @@ function App() {
 
   return (
     <div className="app">
+      
 
       {/* Hide Navbar on Checkout */}
       {!isCheckout && <Navbar />}

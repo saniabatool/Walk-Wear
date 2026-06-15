@@ -5,7 +5,6 @@ export const CartContext = createContext();
 function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
 
-  // Cart Drawer State
   const [isCartOpen, setIsCartOpen] =
     useState(false);
 
@@ -15,6 +14,11 @@ function CartProvider({ children }) {
     );
 
     setCart(updatedCart);
+  };
+
+  // Clear entire cart
+  const clearCart = () => {
+    setCart([]);
   };
 
   return (
@@ -27,6 +31,7 @@ function CartProvider({ children }) {
         setIsCartOpen,
 
         removeFromCart,
+        clearCart,
       }}
     >
       {children}

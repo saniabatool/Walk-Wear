@@ -1,7 +1,7 @@
 const products = [
   {
     id: 1,
-    title: "MAROON SHOE",
+    title: "COURT SHOES",
     price: 1400,
     oldPrice: 3000,
     rating: 5,
@@ -19,7 +19,7 @@ const products = [
 
   {
     id: 2,
-    title: "CHUNKY SHOE",
+    title: "CHUNKY SHOES",
     price: 1499,
     oldPrice: 4800,
     rating: 5,
@@ -55,7 +55,7 @@ const products = [
 
   {
     id: 4,
-    title: "WHITE PUMPS",
+    title: "NET PUMPS",
     price: 1399,
     oldPrice: 4200,
     rating: 5,
@@ -64,7 +64,7 @@ const products = [
       "/images/pumps.jpg",
       "/images/blacknet.jpg",
     ],
-    colors: ["White", "Red", "Black"],
+    colors: ["White", "Black"],
     sizes: [36, 37, 38, 39, 40, 41],
     description: "Step into comfort and effortless style with these elevated sandals, designed for both everyday wear and special occasions. Featuring a carefully crafted sole for enhanced support and cushioning, they provide lasting comfort throughout the day. The elevated design adds a flattering touch while remaining practical for warm-weather outings and daily use. Perfectly suited to complement both traditional and modern outfits, these sandals combine elegance with functionality. Built with durable materials for long-lasting wear, they are a versatile addition to any wardrobe. Whether you're running errands, attending social gatherings, or enjoying a casual stroll, these sandals offer the perfect balance of comfort, support, and style.",
     tag: ["sale", "best"],
@@ -73,7 +73,7 @@ const products = [
 
   {
     id: 5,
-    title: "MULES",
+    title: "SQUARE HEELS",
     price: 2860,
     oldPrice: 4000,
     image: "/images/brownmule.jpg",
@@ -81,7 +81,7 @@ const products = [
       "/images/brownmule.jpg",
       "/images/blackmules.jpg",
     ],
-    colors: ["Black", "Brown"],
+    colors: ["Brown", "Black"],
     sizes: [36, 37, 38, 39, 40, 41],
     description: "Step into comfort and effortless style with these elevated sandals, designed for both everyday wear and special occasions. Featuring a carefully crafted sole for enhanced support and cushioning, they provide lasting comfort throughout the day. The elevated design adds a flattering touch while remaining practical for warm-weather outings and daily use. Perfectly suited to complement both traditional and modern outfits, these sandals combine elegance with functionality. Built with durable materials for long-lasting wear, they are a versatile addition to any wardrobe. Whether you're running errands, attending social gatherings, or enjoying a casual stroll, these sandals offer the perfect balance of comfort, support, and style.",
     tag: "best",
@@ -90,7 +90,7 @@ const products = [
 
   {
     id: 6,
-    title: "MULE PUMPS",
+    title: "MULE HEELS",
     price: 2999,
     oldPrice: 4200,
     image: "/images/blackmule.jpg",
@@ -132,7 +132,7 @@ const products = [
       "/images/lowcamel.jpg",
       "/images/lowpink.jpg",
     ],
-    colors: ["Pink", "Mustard"],
+    colors: ["Mustard", "Pink"],
     sizes: [36, 37, 38, 39, 40, 41],
     description: "Step into comfort and effortless style with these elevated sandals, designed for both everyday wear and special occasions. Featuring a carefully crafted sole for enhanced support and cushioning, they provide lasting comfort throughout the day. The elevated design adds a flattering touch while remaining practical for warm-weather outings and daily use. Perfectly suited to complement both traditional and modern outfits, these sandals combine elegance with functionality. Built with durable materials for long-lasting wear, they are a versatile addition to any wardrobe. Whether you're running errands, attending social gatherings, or enjoying a casual stroll, these sandals offer the perfect balance of comfort, support, and style.",
     tag: "new",

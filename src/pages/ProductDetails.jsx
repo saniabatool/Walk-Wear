@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useContext, useState, useEffect } from "react";;
+import { useContext, useState, useEffect } from "react";
 
 import products from "../data/products";
 import { CartContext } from "../context/CartContext";
@@ -37,6 +37,23 @@ function ProductDetails() {
   );
 
   const [quantity, setQuantity] = useState(1);
+
+  // Reset states when product changes
+  useEffect(() => {
+    setSelectedImage(
+      product.gallery?.[0] || product.image
+    );
+
+    setSelectedColor(
+      product.colors?.[0] || ""
+    );
+
+    setSelectedSize(
+      product.sizes?.[0] || ""
+    );
+
+    setQuantity(1);
+  }, [product]);
 
   const addToCart = () => {
     const existingItem = cart.find(
@@ -163,21 +180,32 @@ function ProductDetails() {
         <h4>Color</h4>
 
         <div className="options">
-          {product.colors?.map((color) => (
-            <button
-              key={color}
-              className={
-                selectedColor === color
-                  ? "active"
-                  : ""
-              }
-              onClick={() =>
-                setSelectedColor(color)
-              }
-            >
-              {color}
-            </button>
-          ))}
+          {product.colors?.map(
+            (color, index) => (
+              <button
+                key={color}
+                className={
+                  selectedColor === color
+                    ? "active"
+                    : ""
+                }
+                onClick={() => {
+                  setSelectedColor(color);
+
+                  // Change image according to selected color
+                  if (
+                    product.gallery?.[index]
+                  ) {
+                    setSelectedImage(
+                      product.gallery[index]
+                    );
+                  }
+                }}
+              >
+                {color}
+              </button>
+            )
+          )}
         </div>
 
         <h4>Size</h4>
@@ -239,7 +267,6 @@ function ProductDetails() {
 
         <div className="description">
           <h3>Description</h3>
-
           <p>{product.description}</p>
         </div>
       </div>

@@ -13,21 +13,21 @@ function CustomerReviews() {
       image: "/images/CoutShoe.jpg",
       text: "I am really impressed with the comfort and durability of these Heels",
       name: "Zainab",
-      product: "SQUARE HEELS",
+      product: "MULE HEELS",
     },
 
     {
       image: "/images/whitePumps.jpg",
       text: "These pumps are lightweight, comfortable and very trendy.",
       name: "Saba Abbas",
-      product: "NET PUMPS",
+      product: "PUMPS",
     },
 
     {
       image: "/images/pyramidHeels.jpg",
       text: "The quality exceeded my expectations. The sole is soft and supportive.",
       name: "Humna",
-      product: "CHUNKY HEELS",
+      product: "SHOES",
     },
   ];
 

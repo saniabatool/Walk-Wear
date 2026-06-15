@@ -106,14 +106,21 @@ function CartDrawer() {
           </h3>
 
           <button
-            className="checkout-btn"
-            onClick={() => {
-              setIsCartOpen(false);
-              navigate("/checkout");
-            }}
-          >
-            Checkout
-          </button>
+  className={`checkout-btn ${
+    cart.length === 0 ? "disabled" : ""
+  }`}
+  disabled={cart.length === 0}
+  onClick={() => {
+    if (cart.length === 0) return;
+
+    setIsCartOpen(false);
+    navigate("/checkout");
+  }}
+>
+  {cart.length === 0
+    ? "Cart Empty"
+    : "Checkout"}
+</button>
         </div>
       </div>
     </div>

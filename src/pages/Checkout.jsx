@@ -1,11 +1,14 @@
 import emailjs from "@emailjs/browser";
 import { useState, useContext } from "react";
 import { CartContext } from "../context/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./Checkout.css";
 
 function Checkout() {
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } =
+  useContext(CartContext);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -39,7 +42,12 @@ function Checkout() {
   !formData.phone
 )
      {
-      alert("Please fill all required fields.");
+      Swal.fire({
+  icon: "warning",
+  title: "Missing Information",
+  text: "Please fill all required fields.",
+  confirmButtonColor: "#000",
+});
       return;
     }
 
@@ -86,13 +94,32 @@ const customerEmail = await emailjs.send(
 );
 
 console.log("Customer email sent:", customerEmail);
-  alert(
-    "Thank you! Your order has been placed successfully. A confirmation email has been sent to you."
-  );
+  Swal.fire({
+  icon: "success",
+  title: "🎉 Order Confirmed!",
+  html: `
+    <div style="padding:10px">
+      <p>Your order has been placed successfully.</p>
+      <p>📧 Confirmation email has been sent.</p>
+      <p>🚚 We will contact you shortly.</p>
+    </div>
+  `,
+  confirmButtonText: "Continue Shopping",
+  confirmButtonColor: "#000",
+  allowOutsideClick: false,
+}).then(() => {
+  clearCart(); // Empty cart
+  navigate("/");
+});
 
 } catch (error) {
   console.error(error);
-  alert("Failed to place order.");
+  Swal.fire({
+  icon: "error",
+  title: "Order Failed",
+  text: "Something went wrong. Please try again.",
+  confirmButtonColor: "#000",
+});
 }
   }
   return (
@@ -102,24 +129,7 @@ console.log("Customer email sent:", customerEmail);
     WALK & WEAR
   </Link>
 </div>
-
-     {/* <div>
-        <button className="checkout-cart-btn">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-          >
-            <path d="M6 7H18L17 20H7L6 7Z" />
-            <path d="M9 7V5C9 3.3 10.3 2 12 2C13.7 2 15 3.3 15 5V7" />
-          </svg>
-        </button>
-      </div> */}
-
-      <div className="checkout-page">
+    <div className="checkout-page">
         <div className="checkout-left">
           <h2>Contact</h2>
 
